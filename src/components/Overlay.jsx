@@ -15,19 +15,19 @@ export const Overlay = () => {
       {progress === 100 && (
         <div className={`intro ${play ? "intro--disappear" : ""}`}>
           <h1 className="logo">
-            WAWATMOS
+            insket
             <div className="spinner">
-              <div className="spinner__image" />
+              {/* <div className="spinner__image" /> */}
             </div>
           </h1>
-          <p className="intro__scroll">Scroll to begin the journey</p>
+          <p className="intro__scroll">滑动滚轮开始</p>
           <button
             className="explore"
             onClick={() => {
               setPlay(true);
             }}
           >
-            Explore
+            start
           </button>
         </div>
       )}

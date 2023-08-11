@@ -1,15 +1,17 @@
+import { useEffect, useLayoutEffect, useMemo, useRef } from "react";
 import { Float, PerspectiveCamera, useScroll } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { gsap } from "gsap";
-import { useEffect, useLayoutEffect, useMemo, useRef } from "react";
 import * as THREE from "three";
 import { Euler, Group, Vector3 } from "three";
 import { usePlay } from "../contexts/Play";
-import { fadeOnBeforeCompile } from "../utils/fadeMaterial";
 import { Airplane } from "./Airplane";
 import { Background } from "./Background";
 import { Cloud } from "./Cloud";
 import { TextSection } from "./TextSection";
+import { Project } from "./Project";
+import { fadeOnBeforeCompile } from "../utils/fadeMaterial";
+
 
 const LINE_NB_POINTS = 1000;
 const CURVE_DISTANCE = 250;
@@ -22,10 +24,13 @@ export const Experience = () => {
   const curvePoints = useMemo(
     () => [
       new THREE.Vector3(0, 0, 0),
-      new THREE.Vector3(0, 0, -CURVE_DISTANCE),
-      new THREE.Vector3(100, 0, -2 * CURVE_DISTANCE),
-      new THREE.Vector3(-100, 0, -3 * CURVE_DISTANCE),
-      new THREE.Vector3(100, 0, -4 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -.8 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -1.1 * CURVE_DISTANCE),
+      new THREE.Vector3(100, 20, -1.7 * CURVE_DISTANCE),
+      new THREE.Vector3(-100, 0, -2.8 * CURVE_DISTANCE),
+      new THREE.Vector3(-100, 0, -3.0 * CURVE_DISTANCE),
+      new THREE.Vector3(-100, 0, -3.6 * CURVE_DISTANCE),
+      new THREE.Vector3(100, 20, -4 * CURVE_DISTANCE),
       new THREE.Vector3(0, 0, -5 * CURVE_DISTANCE),
       new THREE.Vector3(0, 0, -6 * CURVE_DISTANCE),
       new THREE.Vector3(0, 0, -7 * CURVE_DISTANCE),
@@ -49,8 +54,8 @@ export const Experience = () => {
           curvePoints[1].y,
           curvePoints[1].z
         ),
-        subtitle: `Welcome to Wawatmos,
-Have a seat and enjoy the ride!`,
+        subtitle: `hello
+         welcome to insket`,
       },
       {
         cameraRailDist: 1.5,
@@ -59,9 +64,9 @@ Have a seat and enjoy the ride!`,
           curvePoints[2].y,
           curvePoints[2].z
         ),
-        title: "Services",
-        subtitle: `Do you want a drink?
-We have a wide range of beverages!`,
+        title: "这里是一些基本信息^ ^",
+        subtitle: `男  软件技术专业毕业
+        3年web开发经验`,
       },
       {
         cameraRailDist: -1,
@@ -70,18 +75,40 @@ We have a wide range of beverages!`,
           curvePoints[3].y,
           curvePoints[3].z
         ),
-        title: "Fear of flying?",
-        subtitle: `Our flight attendants will help you have a great journey`,
+        title: "关于我的技能 ?",
+        subtitle: `js ts vue2/3 react node
+             uniapp electron  threejs
+            最近在学 nestjs ...       `,
       },
       {
         cameraRailDist: 1.5,
         position: new Vector3(
           curvePoints[4].x + 3.5,
           curvePoints[4].y,
-          curvePoints[4].z - 12
+          curvePoints[4].z 
         ),
-        title: "Movies",
-        subtitle: `We provide a large selection of medias, we highly recommend you Porco Rosso during the flight`,
+        title: `2023-02~现在 南京易智鸿远科技有限公司 前端开发`,
+        subtitle: `2021-03~2022-12  南京军天信息科技有限公司 前端开发`,
+      },
+      {
+        cameraRailDist: 1.5,
+        position: new Vector3(
+          curvePoints[5].x + 5.5,
+          curvePoints[5].y,
+          curvePoints[5].z - 2
+        ),
+        title: `接下来是一些项目`,
+        subtitle: ``,
+      },
+      {
+        cameraRailDist: 1.5,
+        position: new Vector3(
+          curvePoints[5].x + 5.5,
+          curvePoints[5].y,
+          curvePoints[5].z - 2
+        ),
+        title: ``,
+        subtitle: <Project />,
       },
     ];
   }, []);
@@ -543,7 +570,7 @@ We have a wide range of beverages!`,
               ref={lineMaterialRef}
               transparent
               envMapIntensity={2}
-              onBeforeCompile={fadeOnBeforeCompile}
+              // onBeforeCompile={fadeOnBeforeCompile}
             />
           </mesh>
         </group>
