@@ -10,16 +10,16 @@ export const Overlay = () => {
     ${hasScroll ? "overlay--scrolled" : ""}`}
     >
       <div
-        className={`loader ${progress === 100 ? "loader--disappear" : ""}`}
+        className={`loader ${
+          progress === 100 ? "loader--disappear" : ""
+        }`}
       />
       {progress === 100 && (
         <div className={`intro ${play ? "intro--disappear" : ""}`}>
-          <h1 className="logo">
+         {!end &&  <h1 className="logo">
             insket
-            <div className="spinner">
-              {/* <div className="spinner__image" /> */}
-            </div>
-          </h1>
+           
+          </h1>}
           <p className="intro__scroll">滑动滚轮开始</p>
           <button
             className="explore"
@@ -32,7 +32,15 @@ export const Overlay = () => {
         </div>
       )}
       <div className={`outro ${end ? "outro--appear" : ""}`}>
-        <p className="outro__text">Wish you had a great flight with us...</p>
+        <p className="outro__text">
+          您可以通过以下方式与我联系
+        </p>
+        <div className="outro__text">
+          Wechat: 17721557807
+        </div>
+        <div className="outro__text">
+          电话: 17721557807 / 18168060443
+        </div>
       </div>
     </div>
   );
